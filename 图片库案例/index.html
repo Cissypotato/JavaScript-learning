@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片库</title>
+</head>
+<body>
+    <h1>Snapshots</h1>
+    <ul id="imageGallery">
+        <li>
+            <a href="./images/Fireworks.jpg" onclick="showPic(this); return false;" title="a fireworks display">Fireworks</a>
+        </li>
+        <li>
+            <a href="images/coffee.jpg" onclick="showPic(this); return false;" title="A cup of coffee">Coffee</a>
+        </li>
+        <li>
+            <a href="images/rose.jpg" onclick="showPic(this); return false;" title="A Red,red rose">Rose</a>
+        </li>
+        <li>
+            <a href="images/bigben.jpg" onclick="showPic(this); return false;" title="The Famous cloak">Big Ben</a>
+        </li>
+    </ul>
+    
+    <img  id="placeholder" src="" alt="" srcset="">
+
+    <p id="description">Choose a image</p>
+</body>
+<script >
+    window.onload=countBodyChildren
+    function showPic(whichPic){
+        let source=whichPic.getAttribute('href')
+        let title=whichPic.getAttribute('title')
+        let placeholder=document.getElementById('placeholder')
+        let description=document.getElementById('description')
+        placeholder.setAttribute('src',source)
+        description.childNodes[0].nodeValue=title
+    }
+    function countBodyChildren(){
+       let bodyChildNumber= document.getElementsByTagName('body')[0]
+       alert(bodyChildNumber.childNodes.length)
+    }
+
+  
+</script>
+</html>
