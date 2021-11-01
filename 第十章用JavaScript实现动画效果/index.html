@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="message">
+        whee!
+    </p>
+    <p id="message2">
+        whoa!
+    </p>
+    <script src="./scripts/addLoadEvent.js"></script>
+    <script src="./scripts/positionMessage.js"></script>
+    <script src="./scripts/moveElement.js"></script>
+    <script>
+       
+
+        // function moveMessage(){
+        //     if(!document.getElementById) return false;
+        //     if(!document.getElementById('message')) return false;
+        //     let elem=document.getElementById('message')
+
+        //     let xops=parseInt(elem.style.left) 
+        //     let yops=parseInt(elem.style.top) 
+        //     console.log(xops)
+        //     if(xops==final_x && yops===100) return true;
+        //     if(xops<final_x) xops++;
+        //     if(xops>200) xops--;
+        //     if(yops<100) yops++;
+        //     if(yops>100) yops--;
+
+        //     elem.style.left=xops+'px'
+        //     elem.style.top=yops+'px'
+        //     movement=setTimeout('moveMessage()',10)
+        // }
+
+       
+
+        
+
+        addLoadEvent(positionMessage)
+        // addLoadEvent(moveElement)
+    </script>
+</body>
+</html>
