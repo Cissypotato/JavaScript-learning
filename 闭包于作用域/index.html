@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包与作用域</title>
+    <style>
+        #box1 {
+            /* width: 60px;
+            border: 1px solid red; */
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box1">Fisrt Box</div>
+    <script>
+        let outVal = "hello"
+        let later
+
+        function outfn() {
+            let innerVal = "world"
+            function innerfn() {
+                console.log(outVal === 'hello', 'outVal')
+                console.log(innerVal === 'world', 'innerVal')
+            }
+            later = innerfn
+        }
+        outfn()
+        later()
+
+
+        //创建私有变量 //能够读取私有变量feints，但不能直接改变
+        function Ninja() {
+            var feints = 0
+            this.getFeints = function () {
+                return feints
+            }
+            this.feint = function () {
+                feints++
+            }
+        }
+        let ninja1 = new Ninja()
+        ninja1.feint()
+        //console.log(feints,'feints')//Uncaught ReferenceError: feints is not defined
+        console.log(ninja1.getFeints(), 'getFeints')//1 'getFeints' // 通常称这种获取私有变量的方法为getter
+
+        function animateIt(elementId) {
+            var elem = document.getElementById(elementId)
+            var trick = 0
+            var timer = setInterval(function () {//回调函数访问函数内部的变量
+                if (trick < 100) {
+
+                    elem.style.left = elem.style.top = trick + 'px'
+                    trick++
+
+                } else {
+                    console.log(111)
+                    clearInterval(timer)
+                }
+            }, 20)
+        }
+        animateIt('box1')
+
+        function skulk(ninja) {
+            report(ninja)
+        }
+        function report(msg) {
+            console.log(msg)
+        }
+        skulk('cissy')
+        skulk('jack')
+    </script>
+</body>
+
+</html>
