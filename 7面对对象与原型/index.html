@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型</title>
+</head>
+
+<body>
+    <script>
+        // var a = {
+        //     name: 'rose'
+        // }
+        // //in 可以判断某个对象上是否具有某个特定属性
+        // console.log('name' in a)
+
+
+        // function Ninja(){}//函数只要一创建，就有prototype属性
+        // Ninja.prototype.swingSword=function(){
+        //     return true
+        // }
+        // const ninja1=Ninja()// 作为普通函数调用，返回undefined
+        // const ninja2= new Ninja()//作为构造函数被调用，返回一个新的对象，新的对象可以调用swingSword方法
+        // console.log(ninja2.swingSword())//true
+
+
+        function Ninja() {
+            this.swung = false;
+            this.swingSword = function () {
+                return !this.swung
+            }
+        }
+        Ninja.prototype.swingSword = function () {
+            return this.swung
+        }
+        const ninja2 = new Ninja()
+        console.log(ninja2.swingSword())//true
+
+    </script>
+
+</body>
+
+</html>

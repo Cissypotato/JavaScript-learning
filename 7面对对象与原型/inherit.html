@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inherit</title>
+</head>
+
+<body>
+    <script>
+        function Person() { }
+        Person.prototype.dance = function () { }
+        function Ninja() { }
+        Ninja.prototype = new Person()
+
+        const ninja1 = new Ninja()
+
+        console.log(ninja1 instanceof Person)//true
+
+        //不能直接Ninja.prototype=Person.prototype
+        //这样他们的原型都是同一个了，操作Ninja的原型会影响Person的原型，同理操作Person的也会影响Ninja的
+    </script>
+</body>
+
+</html>
