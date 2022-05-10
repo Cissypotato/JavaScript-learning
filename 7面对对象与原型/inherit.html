@@ -14,13 +14,24 @@
         Person.prototype.dance = function () { }
         function Ninja() { }
         Ninja.prototype = new Person()
+        
+
 
         const ninja1 = new Ninja()
 
-        console.log(ninja1 instanceof Person)//true
-
+        console.log(ninja1 instanceof Person)//true 
         //不能直接Ninja.prototype=Person.prototype
         //这样他们的原型都是同一个了，操作Ninja的原型会影响Person的原型，同理操作Person的也会影响Ninja的
+         //纠正constructor
+         Object.defineProperty(Ninja.prototype,'constructor',{
+            enumarable:false,
+            value:Ninja,
+            writable:true
+        })
+
+        console.log(Ninja.prototype.constructor)//ƒ Person() { }
+        
+       
     </script>
 </body>
 

@@ -17,26 +17,44 @@
         // console.log('name' in a)
 
 
-        // function Ninja(){}//函数只要一创建，就有prototype属性
-        // Ninja.prototype.swingSword=function(){
-        //     return true
-        // }
-        // const ninja1=Ninja()// 作为普通函数调用，返回undefined
-        // const ninja2= new Ninja()//作为构造函数被调用，返回一个新的对象，新的对象可以调用swingSword方法
+        function Ninja(){}//函数只要一创建，就有prototype属性
+        // console.log(Ninja.prototype)
+        // console.log(Ninja.prototype.constructor===Ninja)
+        Ninja.prototype.swingSword=function(){
+            return true
+        }
+        const ninja1=Ninja()// 作为普通函数调用，返回undefined
+        const ninja2= new Ninja()//作为构造函数被调用，返回一个新的对象，新的对象可以调用swingSword方法
         // console.log(ninja2.swingSword())//true
-
-
-        function Ninja() {
-            this.swung = false;
-            this.swingSword = function () {
-                return !this.swung
+        //!!!注意当原型改变引用时
+        Ninja.prototype={
+            creep(){
+                return true
             }
         }
-        Ninja.prototype.swingSword = function () {
-            return this.swung
-        }
-        const ninja2 = new Ninja()
-        console.log(ninja2.swingSword())//true
+        const ninja3= new Ninja()
+        console.log(ninja2.swingSword())//true //ninja2依旧保持对旧原型的引用
+        console.log(ninja3.creep())//true
+
+        // console.log(ninja2.creep())//报错
+        console.log(ninja2 instanceof Ninja)//false //ninja2引用的原型已不在 在构造函数Ninja的原型上
+
+        
+
+
+        // function Ninja() {
+        //     this.swung = false;
+        //     this.swingSword = function () {
+        //         return !this.swung
+        //     }
+        // }
+        // Ninja.prototype.swingSword = function () {
+        //     return this.swung
+        // }
+        // const ninja2 = new Ninja()
+        // console.log(ninja2.swingSword())//true
+       
+
 
     </script>
 
