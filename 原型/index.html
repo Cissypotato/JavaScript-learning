@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prototype</title>
+</head>
+<body>
+    <script>
+        /**显示原型与隐式原型**/
+        function Fn(){}
+        const fn1=new Fn()//内部执行了 this.__proto__=Fn.prototype
+       
+        //  console.log(fn1.__proto__,'fn1.__proto__')
+
+        // console.log(fn1.__proto__===Fn.prototype)//true
+        // Fn.prototype.test=function(){
+        //     return true
+        // }
+        // console.log(fn1.test(),'fn1.test()')//true //因为fn1.__proto__===Fn.prototype，所以fn1才能有test方法
+
+
+        /**原型链**/
+        console.log(Fn.__proto__,'Fn.__proto__')
+        console.log(Fn.__proto__===Function.prototype,'Fn.__proto__===Function.prototype')
+        console.log(Object.__proto__===Function.prototype,'Object.__proto__===Function.prototype')
+        console.log(Function.__proto__===Function.prototype,'Function.__proto__===Function.prototype')
+        console.log(Object.prototype.__proto__,'Object.prototype.__proto__')
+      
+    </script>
+</body>
+</html>
