@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inherit</title>
+</head>
+
+<body>
+    <script>
+        function Person(name,age) { 
+            this.name=name
+            this.age=age
+         }
+        Person.prototype.dance = function () { }
+        function Ninja(name,age) { 
+            Person.call(this,name,age)//假继承
+        }
+        Ninja.prototype = new Person()//真继承
+
+        const ninja1 = new Ninja('nuki',18)
+        console.log(ninja1)
+        console.log(ninja1 instanceof Person)//true
+
+
+
+    </script>
+</body>
+
+</html>
