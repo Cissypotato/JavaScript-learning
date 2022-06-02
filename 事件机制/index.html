@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">启动定时器</button>
+    <script>
+        document.getElementById('btn').onclick=function(){
+           let start=Date.now()
+           console.log('start')
+           setTimeout(function(){
+               console.log('setTimeout执行了',Date.now()-start)
+           },200)
+           console.log('end')
+
+           for(let i=0;i<1000000000;i++){
+
+           }
+        }
+    </script>
+</body>
+</html>
