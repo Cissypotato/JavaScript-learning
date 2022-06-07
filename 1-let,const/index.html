@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let const</title>
+    <style>
+        .item {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid #eee;
+            margin-top: 20px;
+            /* background-color: rgb(204, 127, 26); */
+        }
+
+        .wrapper {
+            display: flex;
+            position: relative;
+        }
+        .item1{
+            display: flex;
+        }
+
+        #my12 {
+            width: 0px;
+            height: 0px;
+            border: 50px solid transparent;
+            border-left: 50px solid pink;
+            /* border-right: 100px solid transparent; */
+        }
+        /* #my12::after{
+            display: block;
+            content: '';
+            width: 0px;
+            height: 0px;
+            border: 52px solid transparent;
+            border-left: 52px solid red;
+            position: absolute;
+            left: 100px;
+            top: 0;
+            z-index: -1;
+        } */
+
+        #my11 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        
+        .item3{
+            background: #741021;
+            width: 50px;
+            height: 0px;
+            position: absolute;
+            left: 106px;
+            border: 50px solid transparent;
+            border-left: 50px solid white;
+            z-index: -1;
+        }
+        .item3::after{
+            position: relative;
+            left: 100px;
+            top: -50px;
+            display: block;
+            content: '';
+            width: 0px;
+            height: 0px;
+            border: 50px solid transparent;
+            border-left: 50px solid #741021;
+        }
+        .item2{
+            background: #741021;
+            width: 50px;
+            height: 0px;
+            position: absolute;
+            left: 262px;
+            border: 50px solid transparent;
+            border-left: 50px solid white;
+            z-index: -2;
+        }
+        /* my12 */
+
+        /* #triangle02 {
+            width: 200PX;
+            height: 200PX;
+            outline: 50px solid blue;
+            border-right: 50px solid red;
+            border-bottom: 50px solid green;
+            border-left: 50px solid yellow;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="item1">
+            <div id="my11"></div>
+            <div id="my12"></div> 
+        </div>
+        <!-- <div class="item2">
+            <div id="my11"></div>
+            <div id="my12"></div> 
+        </div> -->
+        <div class="item3"></div>
+
+        <div class="item2"></div>
+    </div>
+    
+
+<!-- <div id="triangle02"></div> -->
+    <div>
+        <h3> click item and change background-color</h3>
+        <div class="item">item</div>
+        <div class="item">item</div>
+        <div class="item">item</div>
+    </div>
+    <script>
+        /**let**/
+        //1.变量不能重复声明，会报错（var 可以，不会报错
+        var a = 1
+        var a = '22'
+        //2.块级作用域
+        // {
+        //     let cat ='xiaohua'
+        //     var dog='xiaobai'
+        //     console.log(cat)//xiaohua
+        // }
+        // console.log(dog)//xiaobai
+        // console.log(cat)//cat is not defined
+
+
+        //3.不会变量提升，只能声明之后使用
+        // console.log(b) //undefined
+        // console.log(c) //Cannot access 'c' before initialization
+        // var b=2
+        // let c=3
+
+        //4.不影响作用域链
+
+        // {
+        //     let a=1
+        //     function fn(){
+        //         console.log(a)
+        //     }
+        //     fn()//1
+        // }
+
+
+        //for 应用
+        // console.log(i,'outer')
+        let items = document.getElementsByClassName('item')
+        // for (var i=0;i<3;i++){
+        //     console.log(i,'inner')
+        //     items[i].onclick=function(){
+        //         console.log(i,'fn')
+        //         this.style.background='pink'
+        //     }
+
+        // }
+
+        for (let i = 0; i < 3; i++) {
+            console.log(i, 'inner')
+            items[i].onclick = function () {
+                items[i].style.background = 'pink'
+                console.log(i, 'fn')
+            }
+        }
+
+    </script>
+</body>
+
+</html>
