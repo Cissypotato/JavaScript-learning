@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+
+<body>
+    <script>
+        //this是静态的。this始终指向函数声明时所在的作用域下的this
+
+        function getName1() {
+            console.log(this.name)
+        }
+
+        let getName2 = () => {
+            console.log(this.name)
+        }
+        getName1()//helloWord
+        getName2()//helloWord
+        window.name = 'helloWord'
+
+        let obj = {
+            name: 'zyl',
+            getName1() {
+                console.log(this.name)
+            },
+            getName2: () => {
+                console.log(this.name)
+            }
+        }
+        getName1.call(obj)//zyl
+        getName2.call(obj)//helloWord
+        obj.getName1()//zyl
+        obj.getName2()//helloWord
+
+        //2.不能作为构造函数实例化对象
+
+        // let MyObj = () => {
+            
+        //  }
+
+        //  let myobj=new MyObj()
+
+
+         //3.没有arguments隐式参数,如果要用，可以用 rest 参数代替
+
+         let num=(...val)=>{
+             console.log(val)// [1, 2, 3]
+             console.log(arguments)//Uncaught ReferenceError: arguments is not defined at num 
+         }
+
+         num(1,2,3)
+
+
+        //          4. 简写
+        // ● 省略小括号，当形参只有一个的时候
+        // ● 省略花括号，当代码体只有一条语句的时候
+
+        let sum=x=>x+x
+
+        //等同于
+        // let sum =(x)=>{
+        //     return x+x
+        // }
+
+
+    </script>
+</body>
+
+</html>
