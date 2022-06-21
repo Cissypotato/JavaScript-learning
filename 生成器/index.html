@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generator</title>
+</head>
+
+<body>
+
+    <script>
+        function* WeaponGenerator() {
+            yield 'cat'
+            yield 'dog'
+            yield 'pig'
+
+        }
+
+        //调用生成器之后会生成一个迭代器。（所以有next方法，也可使用for...of
+        // for(let weapon of WeaponGenerator()){
+        //     console.log(weapon,'weapon')
+        // }
+        // cat weapon
+        //  dog weapon
+        //  pig weapon
+
+        // const result=WeaponGenerator()
+        // console.log(result.next(),'1')//{value: 'cat', done: false} '1'
+        // console.log(result.next(),'2')//{value: 'dog', done: false} '2'
+        // console.log(result.next(),'3')//{value: 'pig', done: false} '3'
+        // console.log(result.next(),'4')//{value: undefined, done: true} '4'
+
+
+        // let item
+        // while(!(item=result.next()).done){
+        //     console.log(item.value)
+        // }
+        //for ...of 在后台就是做了这样的操作，所以for...of本质上是语法糖
+
+        function *WeaponAttack(){
+            yield 'rabbit'
+            yield* WeaponGenerator()
+            yield 'puppy'
+        }
+        
+
+        // for(let weapon of WeaponAttack()){
+        //     console.log(weapon)
+        // }
+        // rabbit
+        //  cat
+        //  dog
+        //  pig
+        //  puppy
+
+    </script>
+</body>
+
+</html>
