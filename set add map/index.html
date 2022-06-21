@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set</title>
+</head>
+
+<body>
+    <script>
+        let arr=[1,1,2,2,3,4]
+        let arr2=[3,4,9]
+
+        console.log(new Set(arr))//Set(4)
+
+        /**数组去重**/
+        let result=[...new Set(arr)]
+        console.log(result)
+        /**数组交集**/
+        let result2=[...new Set(arr)].filter(item=>new Set(arr2).has(item))
+        console.log(result2)
+        /**数组并集**/
+        let result3=[...new Set([...arr,...arr2])]
+        console.log(result3)
+        /**数组差集**/ //差集：对于给定的两个集合，返回一个包含所有存在于第一个集合且不存在于第二个集合的元素的新集合
+        let result4=[...new Set(arr)].filter(item=>!new Set(arr2).has(item))
+        console.log(result4)
+
+
+        let mam=new Map
+        mam.set('name','jack')
+        mam.set('run',function(){
+            console.log('run')
+        })
+        let wife={
+            name:'rose'
+        }
+        mam.set(wife,function(){
+            console.log('not real')
+        })
+        console.log(mam)
+        console.log('run',mam.get('run'))
+
+    </script>
+
+</body>
+
+</html>
