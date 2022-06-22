@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modulize</title>
+</head>
+<body>
+    <script type="module">
+    /**通用形式**/
+    //   import * as m1 from "./m1.js"
+    //    m1.sayLove()
+    //    import * as m2 from "./m2.js"
+    //    m2.sayLove()
+    //    import * as m3 from "./m3.js"
+    //    m3.default.sayLove()
+
+    /**解构赋值形式**/
+    // import {name,sayLove} from "./m1.js"
+    // sayLove()
+    // import {name,sayLove} from "./m2.js"
+    // sayLove()
+
+    // import {default as m3} from'./m3.js'
+    // m3.sayLove()
+
+    /**简便形式，只针对默认暴露**/
+
+    import m3 from'./m3.js'
+    m3.sayLove()
+
+
+    </script>
+</body>
+</html>
