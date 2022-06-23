@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await</title>
+</head>
+
+<body>
+    <script>
+
+        // const promise = new Promise(function (resolve, reject) {
+        //     // resolve('hello word')
+        //     reject('fuck world')
+        // })
+
+        async function fn1() {
+            try {
+                let result = await 1;
+                console.log(result)
+            }catch(err){
+                console.log(err)
+            }
+            
+        }
+        fn1()
+
+        // async function fn() {
+        //     return 1    
+        // }
+
+        // async function fn() {
+        //    throw new Error('fuck world')  
+        // }
+        // console.log(fn())
+    </script>
+</body>
+
+</html>
