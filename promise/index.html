@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise</title>
+</head>
+
+<body>
+    <script>
+
+        //Promise是同步，then是异步
+        // let p1=new Promise((resolve,reject)=>{
+        //     console.log(1)
+        //     resolve('11')
+        // })
+        // let p2=new Promise((resolve,reject)=>{
+        //     console.log(2)
+        //     setTimeout(()=>{
+        //         resolve('22')
+        //     },0)
+
+        // })
+        // p2.then(res=>{
+        //     console.log(res)
+        // })
+        // p1.then(res=>{
+        //     console.log(res)
+        // })    
+        // console.log(3)
+
+        //then
+
+        // let p1=new Promise((resolve,reject)=>{
+        //     resolve('success')
+        //     // reject('failed')
+        // })
+        // p1.then(res=>{
+        //     //fulfillment
+        //     console.log(res)
+        // },err=>{
+        //     //rejection
+        //     console.log(err)
+        // })
+
+        // p1.then(res=>{
+        //     //fulfillment
+        //     console.log(res)
+        // })
+        // p1.then(null,err=>{
+        //     //rejection
+        //     console.log(err)
+        // })
+
+
+
+
+
+        //catch
+        //  let p1=new Promise((resolve,reject)=>{
+        //     // reject('fuck the world')
+        //     // throw new Error('some errors')
+        //     e++
+        // })
+        // // p1.then(()=>{},(err)=>{
+        // //     console.log(err)
+        // // })
+        // p1.catch((err)=>{
+        //     console.log(err,'catch')
+        // })
+
+
+        // setTimeout(() => {
+        //     console.log("timer");
+
+        //     queueMicrotask(() => {
+        //         console.log("microtask in timer");
+        //     });
+
+        // }, 0);
+
+        // queueMicrotask(() => {
+        //     console.log("microtask");
+        // });
+        // queueMicrotask(() => {
+        //     console.log("microtask1");
+        // });
+
+        // const promise = new Promise((resolve, reject) => {
+        //     throw new Error("Uh oh!");
+        // });
+
+        // promise.catch(reason => {
+        //     console.log(reason.message); // "Uh oh!"
+        // });
+
+        //  const promise = new Promise((resolve, reject) => {
+        //      try{
+        //         throw new Error("Uh oh!");
+        //      }catch(err){
+        //         reject(err)
+        //      }
+
+        // });
+        // promise.catch(reason => {
+        //     console.log(reason.message); // "Uh oh!"
+        // });
+
+
+        // setTimeout(()=>{
+        //     console.log('setTimeout')
+        // },0)
+        // const promise1 = Promise.resolve(42);
+
+        // const promise2 = promise1.then(value => {
+        //     console.log(value);
+        // });
+        // console.log(promise2)
+        // promise2.then(() => {
+        //     console.log("Finished");
+        // }).then(()=>{
+        //     console.log(222)
+        // });
+        // queueMicrotask(()=>{
+        //     console.warn('que')
+        // })
+
+        // console.log(new Promise((resolve,reject)=>{
+
+        // }))
+
+        /**finally**/
+
+        const p1 = new Promise((resolve, reject) => {
+            resolve('hi')
+        })
+
+        // p1.then((res)=>{
+        //     console.log(res)
+        //     return new Promise((resolve,reject)=>{
+        //         resolve('hi jack')
+        //     })
+        // }).finally(()=>{
+        //     console.log('finally')
+        // }).then((val)=>{
+        //     console.log(val)
+        // })
+
+        // const p2=p1.finally(()=>{
+        //     console.log('finally')
+        //     return 2
+        //     // throw 4
+        // })
+        // console.log(p1===p2)//false
+
+        // p2.then((val)=>{
+        //     console.log(val)//hi
+        // })
+
+        // p2.catch((reason)=>{
+        //     console.log(reason)//4
+        // })
+
+
+        /**any**/
+        // let promise1 = Promise.reject(43);
+        // let promise2 = Promise.resolve(42);
+        // let promise3 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //          resolve(44);
+        //     }, 100);
+        // });
+        // let promise4 = Promise.any([promise1, promise2, promise3]);
+        // promise4.then(value => console.log(value));//42
+
+        let promise1 = Promise.reject(43);
+        let promise2 = Promise.reject(42);
+        let promise3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                 reject(44);
+            }, 100);
+        });
+        let promise4 = Promise.any([promise1, promise2, promise3]);
+        promise4.catch(reason=>{
+            console.log(reason.message)
+            console.log('reason.errors',reason.errors)
+        });
+        // All promises were rejected
+        // reason.errors (3) [43, 42, 44]
+
+
+
+
+
+    </script>
+</body>
+
+</html>
