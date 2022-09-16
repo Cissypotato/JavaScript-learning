@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6之前的模块化</title>
+</head>
+
+<body>
+    <script>
+        // (function countClicks(){
+        //     let numClicks=0
+        //     document.addEventListener('click',()=>{
+        //         alert(++numClicks)
+        //     })
+        // })()
+
+        const MouseCounterMoudle = function () {
+            let numClicks = 0
+            const handleClick = function () {
+                alert(++numClicks)
+            }
+
+            return {
+                countClicks: function () {
+                    document.addEventListener('click', handleClick)
+                }
+            }
+        }();
+
+       
+        MouseCounterMoudle.countClicks();
+
+        (function (module) {
+            let numScroll = 0
+            const handleScroll = () => {
+                alert(++numScroll)
+            }
+
+
+            module.countScroll = function () {
+                document.addEventListener('wheel', handleScroll)
+            }
+
+        })(MouseCounterMoudle);
+
+        MouseCounterMoudle.countScroll()
+
+        //缺点
+        //无法共享模块内的属性（scroll中无法使用click中的属性）
+        //有模块依赖其它模块时，必须考虑依赖顺序
+
+    </script>
+</body>
+
+</html>
